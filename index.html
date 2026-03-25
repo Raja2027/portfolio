@@ -11,11 +11,9 @@
     :root {
       --bg: #080808;
       --surface: #0f0f0f;
-      --surface2: #141414;
       --border: rgba(255,255,255,0.07);
       --border-bright: rgba(255,255,255,0.14);
       --accent: #00ff9d;
-      --accent-dim: rgba(0,255,157,0.12);
       --accent-dim2: rgba(0,255,157,0.06);
       --text: #e8e8e8;
       --text-secondary: #888;
@@ -34,18 +32,14 @@
       overflow-x: hidden;
     }
 
-    /* Interactive canvas background */
     #bg-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
       z-index: 0;
       pointer-events: none;
     }
 
-    /* Scanline overlay */
     body::before {
       content: '';
       position: fixed;
@@ -55,12 +49,9 @@
       z-index: 9999;
     }
 
-    nav, section, header, footer, #hero, #contact {
-      position: relative;
-      z-index: 1;
-    }
+    nav, section, header, footer, #hero, #contact { position: relative; z-index: 1; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -73,267 +64,61 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: 13px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      text-decoration: none;
-    }
-
+    .nav-logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.1em; text-decoration: none; }
     .nav-links { display: flex; gap: 32px; }
-
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    .nav-links a { font-family: var(--mono); font-size: 11px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 120px 5% 80px;
-      position: relative;
       border-bottom: 1px solid var(--border);
     }
-
-    .hero-status {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hero-status::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    .hero-name {
-      font-size: clamp(64px, 11vw, 130px);
-      font-weight: 600;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
+    .hero-name { font-size: clamp(64px, 11vw, 130px); font-weight: 600; line-height: 1; letter-spacing: -0.04em; color: var(--text); margin-bottom: 12px; }
     .hero-name span { color: var(--accent); }
-
-    .hero-title {
-      font-size: clamp(20px, 2.5vw, 32px);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      max-width: 800px;
-    }
-
-    .hero-title span { color: var(--accent); }
-      font-size: 15px;
-      color: var(--text-secondary);
-      max-width: 560px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
+    .hero-title { font-size: clamp(16px, 2.5vw, 28px); font-weight: 400; color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; line-height: 1.3; }
+    .hero-sub { font-size: 15px; color: var(--text-secondary); max-width: 560px; line-height: 1.7; margin-bottom: 40px; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
 
-    .btn {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 12px 24px;
-      text-decoration: none;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-    }
-
+    .btn { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 24px; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none; }
+    .btn-primary { background: var(--accent); color: #000; font-weight: 700; }
     .btn-primary:hover { background: #00cc7d; }
-
-    .btn-outline {
-      border: 1px solid var(--border-bright);
-      color: var(--text-secondary);
-    }
-
+    .btn-outline { border: 1px solid var(--border-bright); color: var(--text-secondary); background: transparent; }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ── SECTION WRAPPER ── */
-    .section {
-      padding: 100px 5%;
-      border-bottom: 1px solid var(--border);
-    }
+    /* SECTIONS */
+    .section { padding: 100px 5%; border-bottom: 1px solid var(--border); }
+    .section-tag { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 60px; }
 
-    .section-tag {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 60px;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .profile-img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; background: var(--surface); }
+    .about-name { font-size: 22px; font-weight: 600; }
+    .about-role { font-size: 12px; color: var(--accent); margin-top: 4px; font-family: var(--mono); }
+    .about-text p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
     .about-text strong { color: var(--text); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-box { background: var(--surface); border: 1px solid var(--border); padding: 28px 24px; }
+    .stat-num { font-family: var(--mono); font-size: 36px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: var(--text-secondary); }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-
-    .stat-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 28px 24px;
-    }
-
-    .stat-num {
-      font-family: var(--mono);
-      font-size: 36px;
-      color: var(--accent);
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-secondary);
-      letter-spacing: 0.03em;
-    }
-
-    .metrics { margin-top: 40px; }
-
-    .metric-item { margin-bottom: 20px; }
-
-    .metric-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
-      font-family: var(--mono);
-    }
-
-    .metric-bar {
-      height: 2px;
-      background: var(--border);
-      position: relative;
-    }
-
-    .metric-fill {
-      position: absolute;
-      top: 0; left: 0; height: 100%;
-      background: var(--accent);
-      transition: width 1s ease;
-    }
-
-    /* ── SKILLS ── */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .skill-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 32px 28px;
-      transition: border-color 0.2s;
-    }
-
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); padding: 32px 28px; transition: border-color 0.2s; }
     .skill-card:hover { border-color: rgba(0,255,157,0.3); }
+    .skill-card-title { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; }
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .skill-list li { font-size: 13px; color: var(--text-secondary); display: flex; align-items: center; gap: 8px; }
+    .skill-list li::before { content: ''; width: 4px; height: 4px; background: var(--accent); flex-shrink: 0; }
 
-    .skill-card-title {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .skill-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .skill-list li {
-      font-size: 13px;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .skill-list li::before {
-      content: '';
-      width: 4px; height: 4px;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    /* ── PROJECTS ── */
+    /* PROJECTS */
     .projects-list { display: flex; flex-direction: column; gap: 2px; }
-
     .project-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -341,140 +126,31 @@
       display: grid;
       grid-template-columns: 80px 1fr;
       gap: 40px;
-      transition: border-color 0.2s;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
     }
+    .project-card:hover { border-color: rgba(0,255,157,0.4); background: rgba(0,255,157,0.02); }
+    .proj-num { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; padding-top: 4px; }
+    .proj-title { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .proj-date { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 16px; }
+    .proj-summary { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .tag { font-family: var(--mono); font-size: 10px; color: var(--accent); background: var(--accent-dim2); border: 1px solid rgba(0,255,157,0.2); padding: 4px 10px; letter-spacing: 0.05em; }
+    .proj-cta { font-family: var(--mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.08em; }
+    .project-card:hover .proj-cta { color: var(--accent); }
 
-    .project-card:hover { border-color: rgba(0,255,157,0.25); }
-
-    .proj-num {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      padding-top: 4px;
-    }
-
-    .proj-body {}
-
-    .proj-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
-    }
-
-    .proj-date {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      margin-bottom: 20px;
-    }
-
-    .proj-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-
-    .proj-desc ul { padding-left: 16px; display: flex; flex-direction: column; gap: 6px; }
-
-    .proj-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .tag {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      background: var(--accent-dim2);
-      border: 1px solid rgba(0,255,157,0.2);
-      padding: 4px 10px;
-      letter-spacing: 0.05em;
-    }
-
-    .proj-link {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      border-bottom: 1px solid var(--border-bright);
-      padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .proj-link:hover { color: var(--accent); border-color: var(--accent); }
-
-    /* ── TIMELINE / EXPERIENCE ── */
+    /* TIMELINE */
     .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--border); }
+    .timeline-item { position: relative; margin-bottom: 56px; }
+    .timeline-item::before { content: ''; position: absolute; left: -36px; top: 6px; width: 8px; height: 8px; background: var(--accent); border: 2px solid var(--bg); }
+    .timeline-date { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+    .timeline-title { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .timeline-org { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; font-family: var(--mono); }
+    .timeline-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 1px;
-      background: var(--border);
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 56px;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -36px; top: 6px;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-    }
-
-    .timeline-date {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .timeline-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .timeline-org {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      font-family: var(--mono);
-    }
-
-    .timeline-desc {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    .timeline-desc ul { padding-left: 16px; display: flex; flex-direction: column; gap: 6px; }
-
-    /* ── CERTS ── */
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      margin-top: 0;
-    }
-
+    /* CERTS */
+    .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
     .cert-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -483,609 +159,825 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      transition: border-color 0.2s;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
     }
+    .cert-card:hover { border-color: rgba(0,255,157,0.4); background: rgba(0,255,157,0.02); }
+    .cert-name { font-size: 14px; color: var(--text); margin-bottom: 4px; }
+    .cert-issuer { font-family: var(--mono); font-size: 10px; color: var(--text-secondary); letter-spacing: 0.05em; }
+    .cert-date { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; white-space: nowrap; }
 
-    .cert-card:hover { border-color: rgba(0,255,157,0.3); }
+    /* DIVIDER */
+    .divider { height: 1px; background: var(--border); margin: 56px 0; }
+    .subsection-title { font-family: var(--mono); font-size: 11px; color: var(--text-secondary); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; }
+    .achieve-list { display: flex; flex-direction: column; gap: 16px; }
+    .achieve-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); }
+    .achieve-badge { font-family: var(--mono); font-size: 10px; color: var(--accent); background: var(--accent-dim2); border: 1px solid rgba(0,255,157,0.2); padding: 4px 10px; white-space: nowrap; letter-spacing: 0.05em; }
+    .achieve-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-    .cert-name {
-      font-size: 14px;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .cert-issuer {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--text-secondary);
-      letter-spacing: 0.05em;
-    }
-
-    .cert-date {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      white-space: nowrap;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      padding: 100px 5%;
-      text-align: center;
-    }
-
-    .contact-headline {
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-
-    .contact-sub {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 40px;
-    }
-
+    /* CONTACT */
+    #contact { padding: 100px 5%; text-align: center; }
+    .contact-headline { font-size: clamp(28px, 4vw, 48px); font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 16px; }
+    .contact-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 40px; }
     .contact-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
-
-    .social-links {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .social-links a {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
+    .social-links { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+    .social-links a { font-family: var(--mono); font-size: 11px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .social-links a:hover { color: var(--accent); }
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 24px 5%;
-      border-top: 1px solid var(--border);
+    /* FOOTER */
+    footer { padding: 24px 5%; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-family: var(--mono); font-size: 11px; color: var(--text-muted); }
+    footer span { font-family: var(--mono); font-size: 11px; color: var(--accent); }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: #0d0d0d;
+      border: 1px solid rgba(0,255,157,0.2);
+      max-width: 780px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.25s;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-header {
+      padding: 32px 40px 24px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: #0d0d0d;
+      z-index: 2;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    footer p {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    footer span {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--accent);
-    }
-
-    /* ── EXTRAS ── */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 56px 0;
-    }
-
-    .subsection-title {
-      font-family: var(--mono);
-      font-size: 11px;
-      color: var(--text-secondary);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    .achieve-list { display: flex; flex-direction: column; gap: 16px; }
-
-    .achieve-item {
-      display: flex;
-      gap: 16px;
       align-items: flex-start;
-      padding: 20px 24px;
-      background: var(--surface);
+      gap: 16px;
+    }
+    .modal-title { font-size: 20px; font-weight: 600; color: var(--text); line-height: 1.3; }
+    .modal-date { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.15em; margin-top: 6px; }
+    .modal-close {
+      background: none;
       border: 1px solid var(--border);
-    }
-
-    .achieve-badge {
-      font-family: var(--mono);
-      font-size: 10px;
-      color: var(--accent);
-      background: var(--accent-dim2);
-      border: 1px solid rgba(0,255,157,0.2);
-      padding: 4px 10px;
-      white-space: nowrap;
-      letter-spacing: 0.05em;
-    }
-
-    .achieve-text {
-      font-size: 14px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      font-family: var(--mono);
+      font-size: 18px;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s;
     }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .project-card { grid-template-columns: 1fr; gap: 16px; }
-      .certs-grid { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      footer { flex-direction: column; gap: 8px; text-align: center; }
+    .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+    .modal-body { padding: 32px 40px; }
+    .modal-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; }
+    .modal-desc ul { padding-left: 18px; display: flex; flex-direction: column; gap: 8px; }
+    .modal-desc li { color: var(--text-secondary); }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .modal-screenshots { margin-bottom: 28px; }
+    .modal-screenshots-title { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; }
+    .modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(0,255,157,0.3);
+      padding: 10px 20px;
+      letter-spacing: 0.08em;
+      transition: background 0.2s;
     }
+    .modal-link:hover { background: rgba(0,255,157,0.08); }
 
-    /* ── FADE IN ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* CAROUSEL */
+    .carousel { position: relative; width: 100%; margin-bottom: 12px; }
+    .carousel-track-wrap { overflow: hidden; border: 1px solid var(--border); }
+    .carousel-track { display: flex; transition: transform 0.35s cubic-bezier(.4,0,.2,1); }
+    .carousel-track img {
+      min-width: 100%; width: 100%;
+      aspect-ratio: 16/9; object-fit: cover;
+      cursor: zoom-in; display: block;
     }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.7); border: 1px solid var(--border-bright);
+      color: var(--text); font-size: 18px; width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 2; transition: border-color 0.2s, color 0.2s;
+    }
+    .carousel-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--border-bright); cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .carousel-dot.active { background: var(--accent); transform: scale(1.3); }
 
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+      z-index: 2000; display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 92vw; max-height: 88vh;
+      object-fit: contain; border: 1px solid var(--border-bright);
+      cursor: zoom-out;
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: 1px solid var(--border);
+      color: var(--text); font-size: 20px; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
+    .lightbox-counter {
+      position: absolute; bottom: 20px;
+      font-family: var(--mono); font-size: 11px; color: var(--text-secondary);
+      letter-spacing: 0.1em;
+    }
+    .lightbox-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,0.5); border: 1px solid var(--border-bright);
+      color: var(--text); font-size: 22px; width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .lightbox-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .lightbox-btn.prev { left: 24px; }
+    .lightbox-btn.next { right: 24px; }
+
+    /* CERT MODAL */
+    .cert-modal-body { padding: 40px; text-align: center; }
+    .cert-preview-frame {
+      width: 100%; aspect-ratio: 4/3;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 24px;
+    }
+    .cert-preview-name { font-size: 18px; font-weight: 600; color: var(--text); }
+    .cert-preview-issuer { font-family: var(--mono); font-size: 12px; color: var(--accent); letter-spacing: 0.1em; }
+    .cert-preview-date { font-family: var(--mono); font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+    .cert-note { font-family: var(--mono); font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; margin-bottom: 24px; }
+
+    /* FADE */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .fade { animation: fadeUp 0.6s ease both; }
     .fade-1 { animation-delay: 0.1s; }
     .fade-2 { animation-delay: 0.2s; }
     .fade-3 { animation-delay: 0.3s; }
     .fade-4 { animation-delay: 0.4s; }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { grid-template-columns: 1fr; gap: 16px; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .modal-header { padding: 24px; }
+      .modal-body { padding: 24px; }
+      .lightbox-btn.prev { left: 8px; }
+      .lightbox-btn.next { right: 8px; }
+    }
   </style>
 </head>
 <body>
 
-  <canvas id="bg-canvas"></canvas>
+<canvas id="bg-canvas"></canvas>
 
-  <nav>
-    <a class="nav-logo" href="#"></a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Work</a>
-      <a href="#experience">Experience</a>
-    </div>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">RAJA BABU</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Work</a>
+    <a href="#Education">Education</a>
+  </div>
+</nav>
 
-  <section id="hero">
-    <div class="hero-name fade fade-1">Raja <span>Babu</span></div>
-    <h1 class="hero-title fade fade-3">Building Scalable Intelligence &amp; Modern Interfaces.</h1>
-    <p class="hero-sub fade fade-3">AI Engineer specializing in deep learning pipelines, MLOps infrastructure, and full-stack development. Bridging complex ML logic with production-grade systems.</p>
-    <div class="hero-btns fade fade-4">
-      <a href="#projects" class="btn btn-primary">Explore Systems</a>
-      <a href="#contact" class="btn btn-outline">Initialize Contact</a>
-    </div>
-  </section>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-name fade fade-1">Raja <span>Babu</span></div>
+  <h1 class="hero-title fade fade-2">Building Scalable Intelligence &amp; Modern Interfaces.</h1>
+  <p class="hero-sub fade fade-3">AI Engineer specializing in deep learning pipelines, MLOps infrastructure, and full-stack development. Bridging complex ML logic with production-grade systems.</p>
+  <div class="hero-btns fade fade-4">
+        <a href="#contact" class="btn btn-outline">Initialize Contact</a>
+  </div>
+</section>
 
-
-
-  <section id="about" class="section">
-    <div class="section-tag">About</div>
-    <h2 class="section-title">The Foundation</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I engineer intelligent systems from the ground up. Currently pursuing my <strong>B.Tech in CSE at LPU</strong>, I focus on building production-grade ML pipelines, MLOps workflows, and full-stack applications.</p>
-        <p>Whether it's a <strong>FaceNet-powered attendance system</strong> with ONNX liveness detection or an end-to-end <strong>MLOps network security pipeline</strong> with Docker and CI/CD, I treat every system as an intricate architecture where every layer matters.</p>
-        <p>I've also led <strong>15+ students</strong> in Python training and designed learning resources in Python and SQL for self-guided learners.</p>
-
-        <div class="metrics">
-          <div class="metric-item">
-            <div class="metric-label"><span>ML / Deep Learning</span><span>92%</span></div>
-            <div class="metric-bar"><div class="metric-fill" style="width:92%"></div></div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-label"><span>Backend Systems (Python / Java)</span><span>88%</span></div>
-            <div class="metric-bar"><div class="metric-fill" style="width:88%"></div></div>
-          </div>
-          <div class="metric-item">
-            <div class="metric-label"><span>MLOps &amp; DevOps</span><span>82%</span></div>
-            <div class="metric-bar"><div class="metric-fill" style="width:82%"></div></div>
-          </div>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-tag">About</div>
+  <h2 class="section-title">The Foundation</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="about-header">
+        <img src="profile.jpeg" class="profile-img" alt="Raja Babu" />
+        <div>
+          <div class="about-name">Raja Babu</div>
+          <div class="about-role">Machine Learning Engineer · AI Specialist · MLOps</div>
         </div>
       </div>
+      <p>I build <strong>production-grade ML systems</strong> that go beyond experimentation into real-world deployment. My focus is on designing scalable ML pipelines and integrating them with backend systems.</p>
+      <p>I've developed systems like a <strong>FaceNet-based attendance platform with liveness detection</strong> and an end-to-end <strong>MLOps network security pipeline</strong>.</p>
+      <p>Currently pursuing B.Tech in CSE at LPU, I specialize in <strong>Deep Learning, Computer Vision, LLMs, and System Design</strong>.</p>
+      <a href="generalcv raja.pdf" download class="btn btn-primary" style="margin-top:20px;">Download Resume</a>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box"><div class="stat-num">3+</div><div class="stat-label">Projects Shipped</div></div>
+      <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Certifications</div></div>
+      <div class="stat-box"><div class="stat-num">15+</div><div class="stat-label">Students Mentored</div></div>
+      <div class="stat-box"><div class="stat-num">7.13</div><div class="stat-label">CGPA at LPU</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="section-tag">Stack Profile</div>
+  <h2 class="section-title">Technical Arsenal</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">Languages</div>
+      <ul class="skill-list">
+        <li>Python</li><li>Java</li><li>C++</li><li>SQL</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Frameworks &amp; Libraries</div>
+      <ul class="skill-list">
+        <li>Flask</li><li>Spring Boot</li><li>Streamlit</li>
+        <li>TensorFlow / Keras</li><li>Scikit-learn</li>
+        <li>NLTK</li><li>OpenCV</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Domains &amp; Tools</div>
+      <ul class="skill-list">
+        <li>Machine Learning &amp; Deep Learning</li>
+        <li>NLP &amp; Computer Vision</li>
+        <li>LLMs &amp; MLOps</li>
+        <li>Docker &amp; CI/CD</li>
+        <li>MongoDB &amp; Git</li>
+        <li>Automation Anywhere</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Soft Skills</div>
+      <ul class="skill-list">
+        <li>Problem Solving &amp; Analytical Thinking</li>
+        <li>Leadership &amp; Mentoring</li>
+        <li>System Design Thinking</li>
+        <li>Communication &amp; Collaboration</li>
+        <li>Fast Learning &amp; Adaptability</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="section-tag">Deployed Nodes</div>
+  <h2 class="section-title">Select Works</h2>
+  <div class="projects-list">
+
+    <div class="project-card" onclick="openProjectModal('p1')">
+      <div class="proj-num">01</div>
+      <div class="proj-body">
+        <h3 class="proj-title">Facial Attendance System with Liveness Detection</h3>
+        <div class="proj-date">MAR 2026</div>
+        <p class="proj-summary">AI-powered biometric attendance system using FaceNet embeddings and ONNX liveness detection, integrated with a Spring Boot + MongoDB Atlas backend.</p>
+        <div class="proj-tags">
+          <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MongoDB Atlas</span>
+          <span class="tag">Python</span><span class="tag">FaceNet</span><span class="tag">ONNX Runtime</span><span class="tag">OpenCV</span>
+        </div>
+        <div class="proj-cta">Click to view details →</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openProjectModal('p2')">
+      <div class="proj-num">02</div>
+      <div class="proj-body">
+        <h3 class="proj-title">End-to-End MLOps Network Security System</h3>
+        <div class="proj-date">DEC 2025</div>
+        <p class="proj-summary">Full MLOps pipeline for network intrusion detection with ETL processing, experiment tracking, Docker containerization, and CI/CD deployment.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">MLflow</span>
+          <span class="tag">Docker</span><span class="tag">FastAPI</span><span class="tag">MongoDB Atlas</span>
+        </div>
+        <div class="proj-cta">Click to view details →</div>
+      </div>
+    </div>
+
+    <div class="project-card" onclick="openProjectModal('p3')">
+      <div class="proj-num">03</div>
+      <div class="proj-body">
+        <h3 class="proj-title">Real-Time Heart Rate Estimation</h3>
+        <div class="proj-date">JUL 2025</div>
+        <p class="proj-summary">Non-contact heart rate estimation from facial video using DeepPhys deep learning architecture, achieving 5.39 MPE accuracy.</p>
+        <div class="proj-tags">
+          <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">DeepPhys</span>
+          <span class="tag">OpenCV</span><span class="tag">Flask</span>
+        </div>
+        <div class="proj-cta">Click to view details →</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="Education" class="section">
+  <div class="section-tag">Timeline Log</div>
+  <h2 class="section-title">Education</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">AUG 2023 – PRESENT</div>
+      <div class="timeline-title">B.Tech Computer Science &amp; Engineering</div>
+      <div class="timeline-org">Lovely Professional University, Punjab</div>
+      <div class="timeline-desc">Specializing in Machine Learning, Deep Learning, and scalable backend infrastructure. CGPA: 7.13.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">APR 2021 – MAR 2023</div>
+      <div class="timeline-title">Intermediate (Class XII)</div>
+      <div class="timeline-org">Govt Co-ed Sr Sec School, New Delhi</div>
+      <div class="timeline-desc">Percentage: 65%</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">APR 2020 – MAR 2021</div>
+      <div class="timeline-title">Matriculation (Class X)</div>
+      <div class="timeline-org">Govt Co-ed Sr Sec School, New Delhi</div>
+      <div class="timeline-desc">Percentage: 75%</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="subsection-title">Certifications &amp; Achievements</div>
+  <div class="certs-grid">
+    <div class="cert-card" onclick="openCertModal('cert1')">
+      <div><div class="cert-name">Certified Essentials Automation Professional</div><div class="cert-issuer">Automation Anywhere</div></div>
+      <div class="cert-date">NOV 2025</div>
+    </div>
+    <div class="cert-card" onclick="openCertModal('cert2')">
+      <div><div class="cert-name">Java Programming</div><div class="cert-issuer">Neocolab</div></div>
+      <div class="cert-date">MAY 2025</div>
+    </div>
+    <div class="cert-card" onclick="openCertModal('cert3')">
+      <div><div class="cert-name">CPP Programming</div><div class="cert-issuer">Neocolab</div></div>
+      <div class="cert-date">DEC 2024</div>
+    </div>
+    <div class="cert-card" onclick="openCertModal('cert4')">
+      <div><div class="cert-name">Data Structures &amp; Algorithms</div><div class="cert-issuer">Neocolab</div></div>
+      <div class="cert-date">DEC 2024</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="subsection-title">Leadership</div>
+  <div class="achieve-list">
+    <div class="achieve-item">
+      <span class="achieve-badge">LEADERSHIP</span>
+      <div class="achieve-text">Led 15+ students in Python training, boosting problem-solving skills among participants, resulting in more proficient coders.</div>
+    </div>
+    <div class="achieve-item">
+      <span class="achieve-badge">COMMUNITY</span>
+      <div class="achieve-text">Designed accessible and practical learning resources in Python and SQL for self-guided learners, boosting engagement.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-tag" style="text-align:center; margin-bottom:16px;">Terminal Access</div>
+  <h2 class="contact-headline">Let's build the future.</h2>
+  <p class="contact-sub">Open to collaborations, internships, and full-time opportunities in AI/ML and backend systems.</p>
+  <div class="contact-btns">
+    <a href="mailto:mergetech2027@gmail.com" class="btn btn-primary">Initialize Communication</a>
+  </div>
+  <div class="social-links">
+    <a href="https://github.com/Raja2027" target="_blank">Github</a>
+    <a href="https://linkedin.com/in/rajabsh" target="_blank">LinkedIn</a>
+    <a href="mailto:mergetech2027@gmail.com">Email</a>
+    <a href="tel:+918750163387">Phone</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Raja Babu. Designed &amp; Engineered for the web.</p>
+  <span>mergetech2027@gmail.com</span>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event, 'projectModal')">
+  <div class="modal">
+    <div class="modal-header">
       <div>
-        <div class="about-stats">
-          <div class="stat-box">
-            <div class="stat-num">3+</div>
-            <div class="stat-label">Major Projects Shipped</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">4</div>
-            <div class="stat-label">Certifications Earned</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">15+</div>
-            <div class="stat-label">Students Trained</div>
-          </div>
-
-        </div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-date" id="modalDate"></div>
       </div>
+      <button class="modal-close" onclick="closeProjectModal()">✕</button>
     </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <div class="section-tag">Stack Profile</div>
-    <h2 class="section-title">Technical Arsenal</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-card-title">Languages</div>
-        <ul class="skill-list">
-          <li>Python</li>
-          <li>Java</li>
-          <li>C++</li>
-          <li>SQL</li>
-        </ul>
+    <div class="modal-body">
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-tags" id="modalTags"></div>
+      <div class="modal-screenshots">
+        <div class="modal-screenshots-title">Screenshots</div>
+        <div id="modalScreenshots"></div>
       </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Frameworks &amp; Libraries</div>
-        <ul class="skill-list">
-          <li>Flask</li>
-          <li>Spring Boot</li>
-          <li>Streamlit</li>
-          <li>TensorFlow / Keras</li>
-          <li>Scikit-learn</li>
-          <li>NLTK</li>
-          <li>OpenCV</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <div class="skill-card-title">Domains &amp; Tools</div>
-        <ul class="skill-list">
-          <li>Machine Learning &amp; Deep Learning</li>
-          <li>NLP &amp; Computer Vision</li>
-          <li>LLMs &amp; MLOps</li>
-          <li>Docker &amp; CI/CD</li>
-          <li>MongoDB &amp; Git</li>
-          <li>Automation Anywhere</li>
-          <li>Containerization &amp; Pipelines</li>
-        </ul>
-      </div>
+      <a id="modalLink" href="#" target="_blank" class="modal-link">[[ View Source on GitHub ]]</a>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section">
-    <div class="section-tag">Deployed Nodes</div>
-    <h2 class="section-title">Select Works</h2>
-    <div class="projects-list">
-
-      <div class="project-card">
-        <div class="proj-num">01</div>
-        <div class="proj-body">
-          <h3 class="proj-title">Facial Attendance System with Liveness Detection</h3>
-          <div class="proj-date">MAR 2026</div>
-          <div class="proj-desc">
-            <ul>
-              <li>AI-powered facial attendance system using Spring Boot and MongoDB Atlas with vector search.</li>
-              <li>512-dimensional face embedding generation via FaceNet; Python AI services integrated with Java backend via REST APIs.</li>
-              <li>Cosine similarity-based face matching pipeline for real-time identity verification.</li>
-              <li>ONNX-based anti-spoofing (liveness detection) model to prevent photo and screen replay attacks.</li>
-            </ul>
-          </div>
-          <div class="proj-tags">
-            <span class="tag">Java</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">MongoDB Atlas</span>
-            <span class="tag">Python</span>
-            <span class="tag">FaceNet</span>
-            <span class="tag">InsightFace</span>
-            <span class="tag">ONNX Runtime</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">REST API</span>
-          </div>
-          <a href="https://github.com/Raja2027/Facial-Attendance-System-with-Liveness-Detection-" target="_blank" class="proj-link">[[ View Source ]]</a>
-        </div>
+<!-- CERT MODAL -->
+<div class="modal-overlay" id="certModal" onclick="closeModal(event, 'certModal')">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="certModalTitle">Certificate Preview</div>
       </div>
-
-      <div class="project-card">
-        <div class="proj-num">02</div>
-        <div class="proj-body">
-          <h3 class="proj-title">End-to-End MLOps Network Security System</h3>
-          <div class="proj-date">DEC 2025</div>
-          <div class="proj-desc">
-            <ul>
-              <li>End-to-end ETL pipeline to ingest, clean, validate, and transform raw network traffic data for security analysis.</li>
-              <li>Modular training and evaluation pipeline with reproducibility and experiment tracking via MLflow.</li>
-              <li>Containerized ML pipeline using Docker with CI/CD workflows for automated testing and deployment.</li>
-              <li>Model monitoring and data drift detection as part of the MLOps lifecycle.</li>
-            </ul>
-          </div>
-          <div class="proj-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">XGBoost</span>
-            <span class="tag">MLflow</span>
-            <span class="tag">PySpark</span>
-            <span class="tag">MongoDB Atlas</span>
-            <span class="tag">Docker</span>
-            <span class="tag">FastAPI</span>
-          </div>
-          <a href="https://github.com/Raja2027/NetworkSecurtiy" target="_blank" class="proj-link">[[ View Source ]]</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <div class="proj-num">03</div>
-        <div class="proj-body">
-          <h3 class="proj-title">Real-Time Heart Rate Estimation</h3>
-          <div class="proj-date">JUL 2025</div>
-          <div class="proj-desc">
-            <ul>
-              <li>Real-time heart rate estimation using deep learning for non-contact vital sign monitoring through facial video analysis.</li>
-              <li>Achieved up to 5.39 MPE accuracy using DeepPhys architecture.</li>
-              <li>Optimized models for accurate heart rate detection from sensor data streams.</li>
-              <li>Integrated ML pipeline with user-facing interfaces for seamless live monitoring.</li>
-            </ul>
-          </div>
-          <div class="proj-tags">
-            <span class="tag">Python</span>
-            <span class="tag">TensorFlow</span>
-            <span class="tag">DeepPhys</span>
-            <span class="tag">OpenCV</span>
-            <span class="tag">Flask</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">NumPy</span>
-          </div>
-          <a href="https://github.com/Raja2027/Real-time-heart-rate-estimation-via-DeepPhys" target="_blank" class="proj-link">[[ View Source ]]</a>
-        </div>
-      </div>
-
+      <button class="modal-close" onclick="closeCertModal()">✕</button>
     </div>
-  </section>
-
-  <!-- EXPERIENCE / EDUCATION / CERTS -->
-  <section id="experience" class="section">
-    <div class="section-tag">Timeline Log</div>
-    <h2 class="section-title">Education</h2>
-
-    <div class="timeline">
-
-      <div class="timeline-item">
-        <div class="timeline-date">AUG 2023 – PRESENT</div>
-        <div class="timeline-title">B.Tech Computer Science &amp; Engineering</div>
-        <div class="timeline-org">Lovely Professional University, Punjab</div>
-        <div class="timeline-desc">
-          Specializing in Machine Learning, Deep Learning, and scalable backend infrastructure. CGPA: 7.13.
-        </div>
+    <div class="cert-modal-body">
+      <div class="cert-preview-frame" id="certPreviewFrame">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="1" opacity="0.4">
+          <circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>
+          <path d="M9 14l-2 6 5-2 5 2-2-6"/>
+        </svg>
+        <div class="cert-preview-name" id="certPreviewName"></div>
+        <div class="cert-preview-issuer" id="certPreviewIssuer"></div>
+        <div class="cert-preview-date" id="certPreviewDate"></div>
       </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">APR 2021 – MAR 2023</div>
-        <div class="timeline-title">Intermediate (Class XII)</div>
-        <div class="timeline-org">Govt Co-ed Sr Sec School, New Delhi</div>
-        <div class="timeline-desc">Percentage: 65%</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">APR 2020 – MAR 2021</div>
-        <div class="timeline-title">Matriculation (Class X)</div>
-        <div class="timeline-org">Govt Co-ed Sr Sec School, New Delhi</div>
-        <div class="timeline-desc">Percentage: 75%</div>
-      </div>
-
+      <div class="cert-note">// To show real certificate, add certificate image files to project folder and update the cert data below</div>
+      <a id="certFileLink" href="#" class="modal-link" style="display:none;">[[ View Certificate File ]]</a>
     </div>
+  </div>
+</div>
 
-    <div class="divider"></div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-btn prev" onclick="shiftLightbox(-1)">&#8249;</button>
+  <img id="lightboxImg" src="" alt="" onclick="closeLightbox()" />
+  <button class="lightbox-btn next" onclick="shiftLightbox(1)">&#8250;</button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
-    <div class="subsection-title">Certifications &amp; Achievements</div>
-    <div class="certs-grid">
-      <div class="cert-card">
-        <div>
-          <div class="cert-name">Certified Essentials Automation Professional</div>
-          <div class="cert-issuer">Automation Anywhere</div>
-        </div>
-        <div class="cert-date">NOV 2025</div>
-      </div>
-      <div class="cert-card">
-        <div>
-          <div class="cert-name">Java Programming</div>
-          <div class="cert-issuer">Neocolab</div>
-        </div>
-        <div class="cert-date">MAY 2025</div>
-      </div>
-      <div class="cert-card">
-        <div>
-          <div class="cert-name">CPP Programming</div>
-          <div class="cert-issuer">Neocolab</div>
-        </div>
-        <div class="cert-date">DEC 2024</div>
-      </div>
-      <div class="cert-card">
-        <div>
-          <div class="cert-name">Data Structures &amp; Algorithms</div>
-          <div class="cert-issuer">Neocolab</div>
-        </div>
-        <div class="cert-date">DEC 2024</div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="subsection-title">Leadership</div>
-    <div class="achieve-list">
-      <div class="achieve-item">
-        <span class="achieve-badge">LEADERSHIP</span>
-        <div class="achieve-text">Led 15+ students in Python training, boosting problem-solving skills among participants, resulting in more proficient coders.</div>
-      </div>
-      <div class="achieve-item">
-        <span class="achieve-badge">COMMUNITY</span>
-        <div class="achieve-text">Designed accessible and practical learning resources in Python and SQL for self-guided learners, boosting engagement.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="section-tag" style="text-align:center; margin-bottom:16px;">Terminal Access</div>
-    <h2 class="contact-headline">Let's build the future.</h2>
-    <p class="contact-sub">Open to collaborations, internships, and full-time opportunities in AI/ML and backend systems.</p>
-    <div class="contact-btns">
-      <a href="/cdn-cgi/l/email-protection#8de0e8ffeae8f9e8eee5bfbdbfbacdeae0ece4e1a3eee2e0" class="btn btn-primary">Initialize Communication</a>
-    </div>
-    <div class="social-links">
-      <a href="https://github.com/Raja2027" target="_blank">Github</a>
-      <a href="https://linkedin.com/in/rajabsh" target="_blank">LinkedIn</a>
-      <a href="/cdn-cgi/l/email-protection#94f9f1e6f3f1e0f1f7fca6a4a6a3d4f3f9f5fdf8baf7fbf9">Email</a>
-      <a href="tel:+918750163387">Phone</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Raja Babu. Designed &amp; Engineered for the web.</p>
-    <span>mergetech2027@gmail.com</span>
-  </footer>
-
-
-  <script>
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    const ACCENT = '0,255,157';
-    const PARTICLE_COUNT = 90;
-    const CONNECTION_DIST = 140;
-    const MOUSE_RADIUS = 160;
-
-    let mouse = { x: -9999, y: -9999 };
-    let W, H;
-
-    function resize() {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
+<script>
+  /* ── PROJECT DATA ── */
+  const projects = {
+    p1: {
+      title: 'Facial Attendance System with Liveness Detection',
+      date: 'MAR 2026',
+      desc: [
+        'AI-powered facial attendance system built with Spring Boot and MongoDB Atlas using vector search for fast embedding lookup.',
+        '512-dimensional face embeddings generated via FaceNet; Python AI services communicate with Java backend through REST APIs.',
+        'Cosine similarity-based face matching pipeline for real-time identity verification with sub-second latency.',
+        'ONNX-based anti-spoofing (liveness detection) model prevents photo and screen replay attacks.'
+      ],
+      tags: ['Java', 'Spring Boot', 'MongoDB Atlas', 'Python', 'FaceNet', 'InsightFace', 'ONNX Runtime', 'OpenCV', 'REST API', 'Cosine Similarity'],
+      screenshots: ['face1.png', 'face2.png', 'face3.png'],
+      link: 'https://github.com/Raja2027/Facial-Attendance-System-with-Liveness-Detection-'
+    },
+    p2: {
+      title: 'End-to-End MLOps Network Security System',
+      date: 'DEC 2025',
+      desc: [
+        'End-to-end ETL pipeline to ingest, clean, validate, and transform raw network traffic data for security analysis.',
+        'Modular training and evaluation pipeline with full reproducibility and experiment tracking via MLflow.',
+        'Containerized ML pipeline using Docker with CI/CD workflows for automated testing and deployment.',
+        'Model monitoring and data drift detection integrated as part of the MLOps lifecycle.'
+      ],
+      tags: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'XGBoost', 'MLflow', 'PySpark', 'MongoDB Atlas', 'Docker', 'FastAPI'],
+      screenshots: ['mloops1.png', 'mloops2.png', 'mloops3.png'],
+      link: 'https://github.com/Raja2027/NetworkSecurtiy'
+    },
+    p3: {
+      title: 'Real-Time Heart Rate Estimation',
+      date: 'JUL 2025',
+      desc: [
+        'Non-contact heart rate estimation using deep learning — enabling vital sign monitoring purely through facial video analysis.',
+        'Achieved up to 5.39 MPE accuracy using DeepPhys architecture trained on physiological video data.',
+        'Optimized inference pipeline for real-time processing of continuous video streams.',
+        'Integrated the ML backend with a Flask-powered interface for seamless live monitoring.'
+      ],
+      tags: ['Python', 'NumPy', 'Pandas', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'Flask', 'DeepPhys'],
+      screenshots: ['heartrate-1.png', 'heartrate-2.png'],
+      link: 'https://github.com/Raja2027/Real-time-heart-rate-estimation-via-DeepPhys'
     }
-    window.addEventListener('resize', resize);
-    resize();
+  };
 
-    window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-    window.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+  /* ── CERT DATA ── */
+  const certs = {
+    cert1: { name: 'Certified Essentials Automation Professional', issuer: 'Automation Anywhere', date: 'NOV 2025', file: 'automation.png' },
+    cert2: { name: 'Java Programming', issuer: 'Neocolab', date: 'MAY 2025', file: 'javaP.pdf' },
+    cert3: { name: 'CPP Programming', issuer: 'Neocolab', date: 'DEC 2024', file: 'c++.pdf' },
+    cert4: { name: 'Data Structures & Algorithms', issuer: 'Neocolab', date: 'DEC 2024', file: 'dsa.pdf' }
+  };
 
-    const ripples = [];
-    window.addEventListener('click', e => {
-      ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.6 });
+  /* ── CAROUSEL & LIGHTBOX STATE ── */
+  let carouselIndex = 0;
+  let carouselImages = [];
+  let lightboxIndex = 0;
+
+  /* ── PROJECT MODAL ── */
+  function openProjectModal(id) {
+    const p = projects[id];
+    document.getElementById('modalTitle').textContent = p.title;
+    document.getElementById('modalDate').textContent = p.date;
+
+    document.getElementById('modalDesc').innerHTML =
+      '<ul>' + p.desc.map(d => '<li>' + d + '</li>').join('') + '</ul>';
+
+    document.getElementById('modalTags').innerHTML =
+      p.tags.map(t => '<span class="tag">' + t + '</span>').join('');
+
+    carouselImages = p.screenshots;
+    carouselIndex = 0;
+
+    const dots = p.screenshots.map((_, i) =>
+      '<div class="carousel-dot' + (i === 0 ? ' active' : '') +
+      '" onclick="goToSlide(' + i + ')"></div>'
+    ).join('');
+
+    const imgs = p.screenshots.map((s, i) =>
+      '<img src="' + s + '" alt="Screenshot ' + (i + 1) + '" onclick="openLightbox(' + i + ')" />'
+    ).join('');
+
+    document.getElementById('modalScreenshots').innerHTML =
+      '<div class="carousel">' +
+        '<div class="carousel-track-wrap">' +
+          '<div class="carousel-track" id="carouselTrack">' + imgs + '</div>' +
+        '</div>' +
+        '<button class="carousel-btn prev" onclick="shiftCarousel(-1)">&#8249;</button>' +
+        '<button class="carousel-btn next" onclick="shiftCarousel(1)">&#8250;</button>' +
+        '<div class="carousel-dots" id="carouselDots">' + dots + '</div>' +
+      '</div>';
+
+    document.getElementById('modalLink').href = p.link;
+    document.getElementById('projectModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProjectModal() {
+    document.getElementById('projectModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── CAROUSEL ── */
+  function shiftCarousel(dir) {
+    carouselIndex = (carouselIndex + dir + carouselImages.length) % carouselImages.length;
+    updateCarousel();
+  }
+
+  function goToSlide(i) {
+    carouselIndex = i;
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    const track = document.getElementById('carouselTrack');
+    if (track) track.style.transform = 'translateX(-' + (carouselIndex * 100) + '%)';
+    document.querySelectorAll('.carousel-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === carouselIndex);
     });
+  }
 
-    class Particle {
-      constructor() { this.init(); }
-      init() {
-        this.x = Math.random() * W;
-        this.y = Math.random() * H;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.size = Math.random() * 1.8 + 0.6;
-        this.alpha = Math.random() * 0.5 + 0.2;
-        this.pulseSpeed = Math.random() * 0.02 + 0.005;
-        this.pulseOffset = Math.random() * Math.PI * 2;
+  /* ── LIGHTBOX ── */
+  function openLightbox(index) {
+    lightboxIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function updateLightbox() {
+    document.getElementById('lightboxImg').src = carouselImages[lightboxIndex];
+    document.getElementById('lightboxCounter').textContent =
+      (lightboxIndex + 1) + ' / ' + carouselImages.length;
+  }
+
+  function shiftLightbox(dir) {
+    lightboxIndex = (lightboxIndex + dir + carouselImages.length) % carouselImages.length;
+    updateLightbox();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  function closeLightboxOnBg(e) {
+    if (e.target === e.currentTarget) closeLightbox();
+  }
+
+  /* ── CERT MODAL ── */
+ function openCertModal(id) {
+  const c = certs[id];
+  document.getElementById('certModalTitle').textContent = c.name;
+
+  const frame = document.getElementById('certPreviewFrame');
+  const linkEl = document.getElementById('certFileLink');
+
+  if (c.file) {
+    const ext = c.file.split('.').pop().toLowerCase();
+
+    if (ext === 'pdf') {
+      frame.innerHTML =
+        '<iframe src="' + c.file + '" style="width:100%; height:100%; border:none;" title="' + c.name + '"></iframe>';
+    } else {
+      frame.innerHTML =
+        '<img src="' + c.file + '" alt="' + c.name + '" ' +
+        'style="max-width:100%; max-height:100%; object-fit:contain;" />';
+    }
+
+    linkEl.href = c.file;
+    linkEl.style.display = 'inline-flex';
+  } else {
+    // Always rebuild the placeholder from scratch
+    frame.innerHTML =
+      '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#00ff9d" stroke-width="1" opacity="0.4">' +
+        '<circle cx="12" cy="8" r="4"/>' +
+        '<path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/>' +
+        '<path d="M9 14l-2 6 5-2 5 2-2-6"/>' +
+      '</svg>' +
+      '<div class="cert-preview-name">' + c.name + '</div>' +
+      '<div class="cert-preview-issuer">' + c.issuer + '</div>' +
+      '<div class="cert-preview-date">' + c.date + '</div>';
+
+    linkEl.style.display = 'none';
+  }
+
+  document.getElementById('certModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+  function closeCertModal() {
+    document.getElementById('certModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── BACKDROP CLICK ── */
+  function closeModal(e, id) {
+    if (e.target === e.currentTarget) {
+      document.getElementById(id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  /* ── ESCAPE KEY ── */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (document.getElementById('lightbox').classList.contains('open')) {
+        closeLightbox();
+      } else {
+        closeProjectModal();
+        closeCertModal();
       }
-      update(t) {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > W) this.vx *= -1;
-        if (this.y < 0 || this.y > H) this.vy *= -1;
-        const dx = this.x - mouse.x;
-        const dy = this.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_RADIUS && dist > 0) {
-          const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
-          this.x += (dx / dist) * force * 3;
-          this.y += (dy / dist) * force * 3;
+    }
+  });
+
+  /* ── KEYBOARD ARROW NAVIGATION FOR LIGHTBOX ── */
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') shiftLightbox(-1);
+    if (e.key === 'ArrowRight') shiftLightbox(1);
+  });
+
+  /* ── BACKGROUND CANVAS ── */
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  const ACCENT = '0,255,157';
+  const PARTICLE_COUNT = 90;
+  const CONNECTION_DIST = 140;
+  const MOUSE_RADIUS = 160;
+
+  let mouse = { x: -9999, y: -9999 };
+  let W, H;
+
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  window.addEventListener('resize', resize);
+  resize();
+
+  window.addEventListener('mousemove', function(e) { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('mouseleave', function() { mouse.x = -9999; mouse.y = -9999; });
+
+  var ripples = [];
+  window.addEventListener('click', function(e) {
+    if (!e.target.closest('.modal-overlay') && !e.target.closest('.project-card') && !e.target.closest('.cert-card') && !e.target.closest('.lightbox')) {
+      ripples.push({ x: e.clientX, y: e.clientY, r: 0, alpha: 0.6 });
+    }
+  });
+
+  function Particle() { this.init(); }
+  Particle.prototype.init = function() {
+    this.x = Math.random() * W; this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4;
+    this.size = Math.random() * 1.8 + 0.6; this.alpha = Math.random() * 0.5 + 0.2;
+    this.pulseSpeed = Math.random() * 0.02 + 0.005; this.pulseOffset = Math.random() * Math.PI * 2;
+  };
+  Particle.prototype.update = function(t) {
+    this.x += this.vx; this.y += this.vy;
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+    var dx = this.x - mouse.x, dy = this.y - mouse.y;
+    var dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist < MOUSE_RADIUS && dist > 0) {
+      var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+      this.x += (dx/dist)*force*3; this.y += (dy/dist)*force*3;
+    }
+    this.currentAlpha = this.alpha * (0.7 + 0.3 * Math.sin(t * this.pulseSpeed + this.pulseOffset));
+  };
+  Particle.prototype.draw = function() {
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba('+ACCENT+','+this.currentAlpha+')'; ctx.fill();
+  };
+
+  var particles = [];
+  for (var i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+  function drawConnections() {
+    for (var i = 0; i < particles.length; i++) {
+      for (var j = i+1; j < particles.length; j++) {
+        var dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < CONNECTION_DIST) {
+          ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = 'rgba('+ACCENT+','+(1-dist/CONNECTION_DIST)*0.18+')';
+          ctx.lineWidth = 0.5; ctx.stroke();
         }
-        this.currentAlpha = this.alpha * (0.7 + 0.3 * Math.sin(t * this.pulseSpeed + this.pulseOffset));
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + ACCENT + ',' + this.currentAlpha + ')';
-        ctx.fill();
       }
     }
+  }
 
-    const particles = Array.from({ length: PARTICLE_COUNT }, () => new Particle());
-
-    function drawConnections() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            const alpha = (1 - dist / CONNECTION_DIST) * 0.18;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(' + ACCENT + ',' + alpha + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
+  function drawMouseConnections() {
+    if (mouse.x < 0) return;
+    for (var i = 0; i < particles.length; i++) {
+      var dx = particles[i].x - mouse.x, dy = particles[i].y - mouse.y;
+      var dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < MOUSE_RADIUS * 1.4) {
+        ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = 'rgba('+ACCENT+','+(1-dist/(MOUSE_RADIUS*1.4))*0.5+')';
+        ctx.lineWidth = 0.7; ctx.stroke();
       }
     }
+    ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba('+ACCENT+',0.7)'; ctx.fill();
+  }
 
-    function drawMouseConnections() {
-      if (mouse.x < 0) return;
-      particles.forEach(function(p) {
-        const dx = p.x - mouse.x;
-        const dy = p.y - mouse.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < MOUSE_RADIUS * 1.4) {
-          const alpha = (1 - dist / (MOUSE_RADIUS * 1.4)) * 0.5;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = 'rgba(' + ACCENT + ',' + alpha + ')';
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
-      });
-      ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + ACCENT + ',0.7)';
-      ctx.fill();
+  function drawRipples() {
+    for (var i = ripples.length-1; i >= 0; i--) {
+      var r = ripples[i]; r.r += 4; r.alpha -= 0.015;
+      if (r.alpha <= 0) { ripples.splice(i,1); continue; }
+      ctx.beginPath(); ctx.arc(r.x, r.y, r.r, 0, Math.PI*2);
+      ctx.strokeStyle = 'rgba('+ACCENT+','+r.alpha+')'; ctx.lineWidth = 1; ctx.stroke();
     }
+  }
 
-    function drawRipples() {
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        const r = ripples[i];
-        r.r += 4;
-        r.alpha -= 0.015;
-        if (r.alpha <= 0) { ripples.splice(i, 1); continue; }
-        ctx.beginPath();
-        ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(' + ACCENT + ',' + r.alpha + ')';
-        ctx.lineWidth = 1;
-        ctx.stroke();
+  function drawGridDots() {
+    ctx.fillStyle = 'rgba(0,255,157,0.025)';
+    for (var gx = 0; gx < W; gx += 60)
+      for (var gy = 0; gy < H; gy += 60) {
+        ctx.beginPath(); ctx.arc(gx, gy, 0.8, 0, Math.PI*2); ctx.fill();
       }
-    }
+  }
 
-    function drawGridDots() {
-      ctx.fillStyle = 'rgba(0,255,157,0.025)';
-      for (let gx = 0; gx < W; gx += 60) {
-        for (let gy = 0; gy < H; gy += 60) {
-          ctx.beginPath();
-          ctx.arc(gx, gy, 0.8, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-    }
-
-    let t = 0;
-    function animate() {
-      requestAnimationFrame(animate);
-      t++;
-      ctx.clearRect(0, 0, W, H);
-      drawGridDots();
-      particles.forEach(function(p) { p.update(t); });
-      drawConnections();
-      drawMouseConnections();
-      drawRipples();
-      particles.forEach(function(p) { p.draw(); });
-    }
-
-    animate();
-  </script>
+  var t = 0;
+  function animate() {
+    requestAnimationFrame(animate); t++;
+    ctx.clearRect(0, 0, W, H);
+    drawGridDots();
+    for (var i = 0; i < particles.length; i++) particles[i].update(t);
+    drawConnections(); drawMouseConnections(); drawRipples();
+    for (var i = 0; i < particles.length; i++) particles[i].draw();
+  }
+  animate();
+</script>
 </body>
 </html>
