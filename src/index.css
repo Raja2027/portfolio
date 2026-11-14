@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lavender-white: #E9E8F8;
+  --color-powder-blue: #8DB9F0;
+  --color-sunset-peach: #F5B69E;
+  --color-charcoal: #171E2B;
+  --color-border: rgba(141, 185, 240, 0.35);
+
+  --font-serif: 'Source Serif 4', 'Georgia', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #171E2B;
+  background-color: #E9E8F8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #8DB9F0;
+  color: #171E2B;
+}
+
+/* Scroll reveal animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger-children > .scroll-reveal:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > .scroll-reveal:nth-child(2) { transition-delay: 80ms; }
+.stagger-children > .scroll-reveal:nth-child(3) { transition-delay: 160ms; }
+.stagger-children > .scroll-reveal:nth-child(4) { transition-delay: 240ms; }
+.stagger-children > .scroll-reveal:nth-child(5) { transition-delay: 320ms; }
+.stagger-children > .scroll-reveal:nth-child(6) { transition-delay: 400ms; }
+
+/* Research math styling */
+.math-block {
+  font-family: var(--font-mono);
+  background-color: rgba(233, 232, 248, 0.5);
+  border-left: 2px solid #8DB9F0;
+  padding: 1rem 1.5rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  color: #171E2B;
+}
+
+/* Subtle link underline */
+.link-subtle {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(141, 185, 240, 0.5);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.link-subtle:hover {
+  border-color: #8DB9F0;
+  color: #171E2B;
+}
